@@ -42,7 +42,7 @@ function renderTasks() {
     if (filterValue === 'completed') return task.completed && searchMatch;
     if (filterValue === 'high') return task.priority === 'high' && searchMatch;
     if (filterValue === 'medium') return task.priority === 'medium' && searchMatch;
-    if (filterValue === 'low') return task.priority === 'low' && searchMatch;
+    if (filterValue === 'low') return task.priority === 'low' && searchMatch;   
     return searchMatch;
   });
 
@@ -74,12 +74,12 @@ function renderTasks() {
       </div>
     `;
 
-    // Toggle complete
+    
     li.querySelector('input[type="checkbox"]').addEventListener('change', () => {
       toggleComplete(task.id);
     });
 
-    // Delete task
+    
     li.querySelector('button').addEventListener('click', () => {
       deleteTask(task.id);
     });
@@ -88,7 +88,7 @@ function renderTasks() {
   });
 }
 
-// Add a new task
+
 function addTask(title, priority = 'medium', category = '') {
   tasks.unshift({
     id: Date.now().toString(),
@@ -102,14 +102,14 @@ function addTask(title, priority = 'medium', category = '') {
   renderTasks();
 }
 
-// Toggle task completion
+
 function toggleComplete(id) {
   tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
   saveTasks();
   renderTasks();
 }
 
-// Delete task
+
 function deleteTask(id) {
   if (confirm('Are you sure you want to delete this task?')) {
     tasks = tasks.filter(t => t.id !== id);
@@ -118,7 +118,7 @@ function deleteTask(id) {
   }
 }
 
-// Clear all tasks
+
 function clearAll() {
   if (confirm('Clear ALL tasks?')) {
     tasks = [];
@@ -127,7 +127,7 @@ function clearAll() {
   }
 }
 
-// Event: Form submit
+
 taskForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!taskInput.value.trim()) return;
@@ -135,7 +135,7 @@ taskForm.addEventListener('submit', e => {
   taskForm.reset();
 });
 
-// Event: Search & filter
+
 searchInput.addEventListener('input', renderTasks);
 filterSelect.addEventListener('change', renderTasks);
 
