@@ -26,14 +26,15 @@
  <form id="taskForm" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm mb-6" aria-label="Add task">
  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
   <input id="taskInput" type="text" placeholder="Add a new task..." required
-          class="col-span-2 p-2 rounded border dark:border-gray-700 focus:outline-none focus:ring" />
+          class="col-span-2 p-2 rounded border dark:border-gray-700 focus:outline-none focus:ring " />
           <select id="prioritySelect"  aria-label="Priority" class="p-2 rounded border dark:border-gray-700">
          <option value="medium">Medium Priority</option>
          <option value="High">High Priority</option>
          <option value="low">Low Priority</option>
           </select>
-           <input id="categoryInput" type="text" placeholder="Category (optional)"
-          class="p-2 rounded border dark:border-gray-700" />
+          <input id="categoryInput" type="text" placeholder="Category (optional)"
+  class="p-2 rounded border border-gray-300 bg-white text-black 
+         dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100" />
           <button type="submit" class="md:col-span-3 mt-2 w-full bg-indigo-600 text-white py-2 rounded hover-opacity-900">Add Task</button>
 <section class="flex flex-col md:flex-row items-center gap-3 mb-4">
 <input id="searchInput" type="search" placeholder="Search tasks..." class="flex-1 p-2 rounded border dark:border-gray-700" aria-label="Search tasks">
