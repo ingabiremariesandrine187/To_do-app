@@ -18,8 +18,10 @@
           <input id="darkToggle" type="checkbox" class="form-checkbox" aria-label="Toggle dark mode">
           <span class="text-sm">Dark</span>
         </label>
-           <button id="clearAll" class="text-sm px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-800">Clear all</button>    
-</div>
+           <button id="clearAll" class="text-sm px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-800">Clear all</button>
+           </div>
+ </form>    
+
    </header>
  <form id="taskForm" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm mb-6" aria-label="Add task">
  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -47,24 +49,14 @@
 <section>
     <ul id="tasksList" class="space-y-3" aria-live="polite"></ul>
       <p id="emptyState" class="text-center text-sm text-gray-500 mt-4">No tasks yet — add one above.</p>
-      
+
 </section>
-
-
-
- </div>
- </form>
-
-
-
-
-
-
-    </main>
-
-
-
-
-
+<footer class="mt-8 text-xs text-gray-500">
+ Tip: double-click a task to edit it inline. Changes are saved automatically.
+</footer>
+</div>
+</form>
+</main>
+ <script src="scripts/index.js"></script>
 </body>
 </html>
