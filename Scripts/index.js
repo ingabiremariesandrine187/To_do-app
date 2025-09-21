@@ -14,7 +14,7 @@ const clearAllBtn = document.getElementById('clearAll');
 const darkToggle = document.getElementById('darkToggle');
 const emptyState = document.getElementById('emptyState');
 
-// Load tasks
+// Load tasks from localStorage
 let tasks = loadTasks();
 
 function loadTasks() {
@@ -59,11 +59,15 @@ function renderTasks() {
         'border-l-4 border-green-400'}
     `;
 
+    // Inner HTML with tooltip
     li.innerHTML = `
       <span>${task.title} ${task.category ? `[${task.category}]` : ''}</span>
       <div class="flex items-center gap-2">
-        <input type="checkbox" ${task.completed ? 'checked' : ''} class="w-5 h-5"/>
-        <button class="text-sm text-red-600 dark:text-red-400">Delete</button>
+        <input type="checkbox" ${task.completed ? 'checked' : ''} 
+               title="Mark as completed" class="w-5 h-5 cursor-pointer"/>
+        <button class="text-red-600 dark:text-red-400" title="Delete task">
+          🗑️
+        </button>
       </div>
     `;
 
@@ -81,7 +85,7 @@ function renderTasks() {
   });
 }
 
-// Add task
+// Add a new task
 function addTask(title, priority = 'medium', category = '') {
   tasks.unshift({
     id: Date.now().toString(),
@@ -95,7 +99,7 @@ function addTask(title, priority = 'medium', category = '') {
   renderTasks();
 }
 
-// Toggle complete
+// Toggle task completion
 function toggleComplete(id) {
   tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
   saveTasks();
@@ -104,9 +108,11 @@ function toggleComplete(id) {
 
 // Delete task
 function deleteTask(id) {
-  tasks = tasks.filter(t => t.id !== id);
-  saveTasks();
-  renderTasks();
+  if (confirm('Are you sure you want to delete this task?')) {
+    tasks = tasks.filter(t => t.id !== id);
+    saveTasks();
+    renderTasks();
+  }
 }
 
 // Clear all tasks
@@ -118,7 +124,7 @@ function clearAll() {
   }
 }
 
-// Form submit
+// Event: Form submit
 taskForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!taskInput.value.trim()) return;
@@ -126,14 +132,14 @@ taskForm.addEventListener('submit', e => {
   taskForm.reset();
 });
 
-// Search & filter
+// Event: Search & filter
 searchInput.addEventListener('input', renderTasks);
 filterSelect.addEventListener('change', renderTasks);
 
-// Clear all button
+// Event: Clear all
 clearAllBtn.addEventListener('click', clearAll);
 
-// Dark mode
+// Dark mode setup
 if (localStorage.getItem('theme') === 'dark') {
   document.documentElement.classList.add('dark');
   darkToggle.checked = true;
