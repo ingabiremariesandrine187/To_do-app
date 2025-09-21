@@ -65,9 +65,12 @@ function renderTasks() {
       <div class="flex items-center gap-2">
         <input type="checkbox" ${task.completed ? 'checked' : ''} 
                title="Mark as completed" class="w-5 h-5 cursor-pointer"/>
-        <button class="text-red-600 dark:text-red-400" title="Delete task">
-          🗑️
-        </button>
+        <button class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300" title="Delete task">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M6 18L18 6M6 6l12 12"/>
+  </svg>
+</button>
       </div>
     `;
 
@@ -136,10 +139,9 @@ taskForm.addEventListener('submit', e => {
 searchInput.addEventListener('input', renderTasks);
 filterSelect.addEventListener('change', renderTasks);
 
-// Event: Clear all
+
 clearAllBtn.addEventListener('click', clearAll);
 
-// Dark mode setup
 if (localStorage.getItem('theme') === 'dark') {
   document.documentElement.classList.add('dark');
   darkToggle.checked = true;
@@ -155,5 +157,5 @@ darkToggle.addEventListener('change', () => {
   }
 });
 
-// Initial render
+
 renderTasks();
