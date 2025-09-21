@@ -1,0 +1,28 @@
+:root {
+  --high: #fee2e2;   /* light red */
+  --medium: #fff7ed; /* light amber */
+  --low: #ecfdf5;    /* light green */
+}
+
+/* Visual priority indicator for list items */
+.task-priority-high {
+  background-color: var(--high);
+}
+.task-priority-medium {
+  background-color: var(--medium);
+}
+.task-priority-low {
+  background-color: var(--low);
+}
+
+/* Completed task appearance */
+.task-completed > .task-title {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Focus ring fallback */
+[tabindex]:focus {
+  outline: 3px solid rgba(99,102,241,0.25);
+  outline-offset: 2px;
+}
