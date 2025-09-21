@@ -18,8 +18,17 @@ let tasks= loadTasks();
    applySavedTheme();
   renderTasks();
   attachListeners();
+function loadTasks{
+try{
+     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+}catch{
+    return[];
+}
+}
 
-
+function saveTasks() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  }
 
 
 
